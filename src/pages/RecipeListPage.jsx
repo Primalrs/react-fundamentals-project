@@ -1,15 +1,16 @@
-import { Center, Heading } from '@chakra-ui/react';
-import { data } from '../utils/data';
-
-export const RecipeListPage = () => {
-    // You can play around with the console log,
-    // but ultimately remove it once you are done
-    console.log(data.hits[0].recipe.label);
-    console.log(data.hits.recipe);
-
-    return (
-        <Center h="100vh" flexDir="column">
-            <Heading>Your Recipe App</Heading>
-        </Center>
-    );
+import {   SimpleGrid,  } from "@chakra-ui/react";
+import { data } from "../utils/data";
+import { RecipeCard } from "../components/ui/RecipeCard";
+export const RecipeListPage = ({ onRecipeClick }) => {
+  return (
+    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+      {data.hits.map(({ recipe }) => (
+        <RecipeCard
+          key={recipe.label}
+          recipe={recipe}
+          onRecipeClick={onRecipeClick}
+        />
+      ))}
+    </SimpleGrid>
+  );
 };
