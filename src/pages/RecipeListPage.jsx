@@ -22,7 +22,7 @@ export const RecipeListPage = ({ onRecipeClick }) => {
   return (
     <Stack spacing={6}>
       <Input
-        placeholder="Search recipes by name or health label"
+        placeholder="Search recipes"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
       />
