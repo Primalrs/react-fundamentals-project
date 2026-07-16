@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SimpleGrid, Stack, Input, Text } from "@chakra-ui/react";
+import { SimpleGrid, Stack, Input, Text, Box, Center } from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { RecipeCard } from "../components/ui/RecipeCard";
 export const RecipeListPage = ({ onRecipeClick }) => {
@@ -21,16 +21,25 @@ export const RecipeListPage = ({ onRecipeClick }) => {
 
   return (
     <Stack spacing={6}>
-      <Input
-        placeholder="Search recipes"
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-      />
-
+      <Center>
+        <Box maxW="70%" w="100%">
+          <Input
+            placeholder="Search recipes"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </Box>
+      </Center>
       {filteredRecipes.length === 0 ? (
         <Text>No recipes found for that name or health label.</Text>
       ) : (
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={8}
+          rowGap={8}
+          px={{ base: 2, md: 4, lg: 6 }}
+          py={{ base: 2, md: 4, lg: 6 }}
+        >
           {filteredRecipes.map(({ recipe }) => (
             <RecipeCard
               key={recipe.label}
