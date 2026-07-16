@@ -8,8 +8,16 @@ import {
   Stack,
   SimpleGrid,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+
 export const RecipePage = ({ selectedRecipe, onRecipeClick }) => {
-  console.log(selectedRecipe.calories);
+  console.log(selectedRecipe);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <Card.Root borderRadius="xl" w="full" h="auto" cursor="pointer">
       <Card.Body>
